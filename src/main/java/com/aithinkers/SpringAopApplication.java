@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.aithinkers.dao.AccountDao;
+import com.aithinkers.dao.MembershipDaoImpl;
 
 @SpringBootApplication
 public class SpringAopApplication {
@@ -15,16 +16,24 @@ public class SpringAopApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDao theAccountDao)
+	public CommandLineRunner commandLineRunner(AccountDao theAccountDao,MembershipDaoImpl theMembershipDao)
 	{
 		return runner->{		
-			demoTheBeforeAdvice(theAccountDao);
+			demoTheBeforeAdvice(theAccountDao,theMembershipDao);
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDao theAccountDao) {
-		theAccountDao.addAccount();
-		theAccountDao.addAccount();
+	private void demoTheBeforeAdvice(AccountDao theAccountDao,MembershipDaoImpl theMembershipDao) {
+		
+		theAccountDao.addAccount(new Account(),true);
+		theAccountDao.doWork();
+		
+		theAccountDao.setName("Swagat");
+		theAccountDao.setServiceCode("Dev");
+		theAccountDao.getName();
+		theAccountDao.getServiceCode();
+		
+		theMembershipDao.addMember();
 	}
 
 }
