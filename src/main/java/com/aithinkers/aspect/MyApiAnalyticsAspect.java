@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Order(3)
 public class MyApiAnalyticsAspect {
 
-    @Before("com.luv2code.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
+    @Before("com.aithinkers.dao.forDaoPackageNoGetterSetter()")
     public void performApiAnalytics() {
         System.out.println("\n=====>>> Performing API analytics");
     }

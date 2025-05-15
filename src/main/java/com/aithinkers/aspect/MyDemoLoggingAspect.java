@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Order(2)
 public class MyDemoLoggingAspect {
 	
-	 @Around("execution(* com.luv2code.aopdemo.service.*.getFortune(..))")
+	 @Around("execution(* com.aithinkers.service.*.getFortune(..))")
 	    public Object aroundGetFortune(
 	            ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
 
@@ -57,7 +57,7 @@ public class MyDemoLoggingAspect {
 	    }
 
 	
-	 @After("execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))")
+	 @After("execution(* com.aithinkers.dao.AccountDAO.findAccounts(..))")
 	    public void afterFinallyFindAccountsAdvice(JoinPoint theJoinPoint) {
 
 	        // print out which method we are advising on
@@ -65,7 +65,7 @@ public class MyDemoLoggingAspect {
 	        System.out.println("\n=====>>> Executing @After (finally) on method: " + method);
 	    }
 
-	@AfterThrowing(pointcut = "execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))", throwing = "theExc")
+	@AfterThrowing(pointcut = "execution(* com.aithinkers.dao.AccountDAO.findAccounts(..))", throwing = "theExc")
 	public void afterThrowingFindAccountsAdvice(JoinPoint theJoinPoint, Throwable theExc) {
 
 		// print out which method we are advising on
@@ -109,7 +109,7 @@ public class MyDemoLoggingAspect {
 
 	}
 
-	@Before("com.luv2code.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
+	@Before("com.aithinkers.dao.forDaoPackageNoGetterSetter()")
 	public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
 		System.out.println("\n=====>>> Executing @Before advice on method");
 
