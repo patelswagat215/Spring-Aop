@@ -1,7 +1,8 @@
 package com.aithinkers.dao;
 
-public interface MembershipDao {
-	
-	void addMember();
+public interface MembershipDAO {
 
+    boolean addSillyMember();
+
+    void goToSleep();
 }

@@ -1,20 +1,24 @@
 package com.aithinkers.dao;
 
+import java.util.List;
+
 import com.aithinkers.Account;
 
-public interface AccountDao {
-	
-	void addAccount(Account theAccount,Boolean vipFlag);
-	
-	Boolean doWork();
-	
-	public String getName();
+public interface AccountDAO {
 
-	public void setName(String name);
+    void addAccount(Account theAccount, boolean vipFlag);
 
-	public String getServiceCode();
+    boolean doWork();
 
-	public void setServiceCode(String serviceCode);
+    public String getName();
 
+    public void setName(String name);
 
+    public String getServiceCode();
+
+    public void setServiceCode(String serviceCode);
+    
+    List<Account> findAccounts();
+    
+    List<Account> findAccounts(boolean tripWire);
 }

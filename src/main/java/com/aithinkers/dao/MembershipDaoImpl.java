@@ -3,12 +3,20 @@ package com.aithinkers.dao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MembershipDaoImpl implements MembershipDao{
+public class MembershipDAOImpl implements MembershipDAO {
 
-	@Override
-	public void addMember() {
-		System.out.println(getClass()+"Doing my DB work:Adding a member");
-		
-	}
+    @Override
+    public boolean addSillyMember() {
 
+        System.out.println(getClass() + ": DOING MY DB WORK: ADDING A MEMBERSHIP ACCOUNT");
+
+        return true;
+    }
+
+    @Override
+    public void goToSleep() {
+
+        System.out.println(getClass() + ": I'm going to sleep now...");
+
+    }
 }

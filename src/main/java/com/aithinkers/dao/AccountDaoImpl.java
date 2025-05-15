@@ -1,5 +1,8 @@
 package com.aithinkers.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.aithinkers.Account;
@@ -7,41 +10,83 @@ import com.aithinkers.Account;
 import lombok.Data;
 
 @Repository
-public class AccountDaoImpl implements AccountDao {
+public class AccountDAOImpl implements AccountDAO {
 
-	private String name;
-	private String serviceCode;
+    private String name;
+    private String serviceCode;
+
+    @Override
+    public void addAccount(Account theAccount, boolean vipFlag) {
+
+        System.out.println(getClass() + ": DOING MY DB WORK: ADDING AN ACCOUNT");
+
+    }
+
+    @Override
+    public boolean doWork() {
+
+        System.out.println(getClass() + ": doWork()");
+        return false;
+    }
+
+    public String getName() {
+        System.out.println(getClass() + ": in getName()");
+        return name;
+    }
+
+    public void setName(String name) {
+        System.out.println(getClass() + ": in setName()");
+        this.name = name;
+    }
+
+    public String getServiceCode() {
+        System.out.println(getClass() + ": in getServiceCode()");
+        return serviceCode;
+    }
+
+    public void setServiceCode(String serviceCode) {
+        System.out.println(getClass() + ": in setServiceCode()");
+        this.serviceCode = serviceCode;
+    }
 
 	@Override
-	public void addAccount(Account theAccount, Boolean vipFlag) {
-		System.out.println(getClass() + "Doing my DB work:Adding an account");
+	public List<Account> findAccounts() {
+		List<Account> myAccounts=new ArrayList<>();
+		
+		 // create sample accounts
+        Account temp1 = new Account("John", "Silver");
+        Account temp2 = new Account("Madhu", "Platinum");
+        Account temp3 = new Account("Luca", "Gold");
 
+        // add them to our accounts list
+        myAccounts.add(temp1);
+        myAccounts.add(temp2);
+        myAccounts.add(temp3);
+
+        return myAccounts;
 	}
 
 	@Override
-	public Boolean doWork() {
-		System.out.println("In Boolean doWork()");
-		return true;
-	}
+	public List<Account> findAccounts(boolean tripWire) {
+		
+		 // for academic purposes ... simulate an exception
+        if (tripWire) {
+            throw new RuntimeException("No soup for you!!!");
+        }
 
-	public String getName() {
-		System.out.println("Bla");
-		return "Service Name:-" + name;
-	}
+        List<Account> myAccounts = new ArrayList<>();
 
-	public void setName(String name) {
-		System.out.println("Bla");
-		this.name = name;
-	}
+        // create sample accounts
+        Account temp1 = new Account("John", "Silver");
+        Account temp2 = new Account("Madhu", "Platinum");
+        Account temp3 = new Account("Luca", "Gold");
 
-	public String getServiceCode() {
-		System.out.println("Bla");
-		return "Service Code:-" + serviceCode;
-	}
+        // add them to our accounts list
+        myAccounts.add(temp1);
+        myAccounts.add(temp2);
+        myAccounts.add(temp3);
 
-	public void setServiceCode(String serviceCode) {
-		System.out.println("Bla");
-		this.serviceCode = serviceCode;
+        return myAccounts;
 	}
 
 }
